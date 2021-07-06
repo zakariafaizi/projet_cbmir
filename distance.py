@@ -8,6 +8,7 @@ from typing import List
 from os import listdir
 import datetime as dt
 from math import sqrt
+import matplotlib.pyplot as plt # to show images
 
 
 
@@ -91,22 +92,24 @@ array = bit.values
 
 row0 = ListOfFeatures[0]
 
-counter = 0
-for row1 in array:
-    distance = euclidean_distance(pd.to_numeric(row0[0:14]), pd.to_numeric(row1[1:14]))
-    #print(distance)
-    if distance < 10000:
-        counter+=1
-        if counter <= 10:
-            print("Result Image's name : ",row1[0] , "at folder : ", row1[15] , " distance : ", distance)
-            imgpath = findimage(row1[15],row1[0])
-            img_color = cv2.imread(imgpath,1)  # 1: Color image. 1 is optional.
-            cv2.imshow(str(row1[0]),img_color)
-            cv2.waitKey(0)
 
-neighbors = get_neighbors(array,pd.to_numeric(row0[0:14]), 20)
+neighbors_count = 10   # how many images to return
+neighbors = get_neighbors(array,pd.to_numeric(row0[0:14]), neighbors_count)
+
+
+
+f, images = plt.subplots(neighbors_count,1)  #10 rows and 1 column
+
+i = 0
 for neighbor in neighbors:
-    print(neighbor)
+    print("Result Image's name : ", neighbor[0], "at folder : ", neighbor[15])
+    imgpath = findimage(neighbor[15], neighbor[0])
+    img_color = cv2.imread(imgpath, 1)  # 1: Color image. 1 is optional.
+    images[i].imshow(img_color)
+    i+= 1
+    #cv2.waitKey(0)
+plt.show()
+
 
 
 
