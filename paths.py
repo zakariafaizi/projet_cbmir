@@ -11,3 +11,6 @@ outex_dir:List[str] = listdir(outex_path)
 queryimg_path = path+"QueryImage/"
 queryimg_dir:List[str] = listdir(queryimg_path)
 
+
+output_path = path+"Output/"
+output_dir:List[str] = listdir(queryimg_path)
