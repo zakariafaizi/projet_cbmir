@@ -72,7 +72,7 @@ def get_neighbors(train, test_row, num_neighbors):
     return neighbors
 
 
-bit_file = 'Outex_taxo_names.csv'
+bit_file = 'Outex_taxo.csv'
 bit = read_csv(bit_file,header=None)
 
 array = bit.values
@@ -92,6 +92,8 @@ for neighbor in neighbors:
     print("Result Image's name : ", neighbor[0], "at folder : ", neighbor[8])
     imgpath = findimage(neighbor[8], neighbor[0])
     img_color = cv2.imread(imgpath, 1)  # 1: Color image. 1 is optional.
+    img_color = cv2.cvtColor(img_color, cv2.COLOR_BGR2RGB)
+
     ax =fig.add_subplot(neighbors_count, 5,i+1)  # 10 rows and 1 column
     plt.imshow(img_color)
     plt.axis('off')
