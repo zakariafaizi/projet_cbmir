@@ -80,7 +80,7 @@ array = bit.values
 row0 = ListOfFeatures[0]
 
 
-neighbors_count = 10  # how many images to return
+neighbors_count = 30  # how many images to return
 neighbors = get_neighbors(array,pd.to_numeric(row0[1:7]), neighbors_count)
 
 
