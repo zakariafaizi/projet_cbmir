@@ -86,7 +86,7 @@ def get_neighbors(train, test_row, num_neighbors):
     return neighbors
 
 
-bit_file = 'Outex_Bit_Glcm.csv'
+bit_file = '../datasets/Outex_Bit_Glcm.csv'
 bit = read_csv(bit_file,header=None)
 
 array = bit.values

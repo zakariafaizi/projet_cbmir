@@ -9,7 +9,9 @@ from os import listdir
 import datetime as dt
 from math import sqrt
 import matplotlib.pyplot as plt # to show images
-
+import statistics
+from statistics import mode
+from scipy.spatial import distance
 
 
 
@@ -25,14 +27,14 @@ def bio(file, dossier,nom):
 
 
 
+def sortbydist(row):
+    #print("row",row[1])
+    return row[1]   #sort by distance ascending
 
 
-# calculate the Euclidean distance between two vectors
-def euclidean_distance(row1, row2):
-	distance = 0.0
-	for i in range(len(row1)-1):
-		distance += (row1[i] - row2[i])**2
-	return sqrt(distance)
+def most_common(List):
+    return max(set(List), key = List.count)
+
 
 
 ListOfFeatures = list()
@@ -69,16 +71,36 @@ def findimage(folder,name):
 def get_neighbors(train, test_row, num_neighbors):
     distances = list()
     for train_row in train:
-        dist = euclidean_distance(test_row, pd.to_numeric(train_row[1:7]))
+        dist = distance.canberra(test_row, pd.to_numeric(train_row[1:7]))
         distances.append((train_row, dist))
-    distances.sort(key=lambda tup: tup[1])
+    distances.sort(key=sortbydist)   #sort by distance ascending
+    print("dist",distances)
     neighbors = list()
+    neighbors_classes = list()
     for i in range(num_neighbors):
-        neighbors.append(distances[i][0])
+        neighbors_classes.append(distances[i][0][8])  #classes
+
+    common_class = most_common(neighbors_classes)  # returns the most common class of the query
+    print("common class : ", common_class)
+
+    for j in range(30):
+        cla_ss = distances[j][0][8]
+        #if cla_ss == common_class:
+        neighbors.append(distances[j][0]) # appends the train row to neighbors
+
+
     return neighbors
 
 
-bit_file = 'Outex_bio_R_G_B.csv'
+
+
+
+
+
+
+
+
+bit_file = '../datasets/Outex_bio_R_G_B.csv'
 bit = read_csv(bit_file,header=None)
 
 array = bit.values
@@ -86,7 +108,7 @@ array = bit.values
 row0 = ListOfFeatures[0]
 
 
-neighbors_count = 50  # how many images to return
+neighbors_count = 30  # how many images to return
 neighbors = get_neighbors(array,pd.to_numeric(row0[1:7]), neighbors_count)
 
 
@@ -104,11 +126,12 @@ for neighbor in neighbors:
     plt.axis('off')
     ax.set_title(str(neighbor[0]) + " class "+ str(neighbor[8]), fontsize=7) # gives title to each image
     plt.margins(0, 0)
+    print("i = ",i)
     i+= 1
 
 
-plt.savefig(output_path+'output_bio_r_g_b.png', bbox_inches='tight',pad_inches = 1)  #to save an image containing all the outputs
-img_color = cv2.imread(output_path+'output_bio_r_g_b.png', 1)  # 1: Color image. 1 is optional.
+plt.savefig(output_path+'canberra_bio_r_g_b.png', bbox_inches='tight',pad_inches = 1)  #to save an image containing all the outputs
+img_color = cv2.imread(output_path+'canberra_bio_r_g_b.png', 1)  # 1: Color image. 1 is optional.
 cv2.imshow("Outputs",img_color)  #show the outputs
 cv2.waitKey(0)
 

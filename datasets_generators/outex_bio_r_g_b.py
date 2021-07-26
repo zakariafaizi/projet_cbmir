@@ -45,6 +45,6 @@ for dossier in outex_dir:
 # Create dataframe
 df_final = pd.DataFrame.from_records(data=ListOfFeatures)
 # Create cv file from dataframe
-df_final.to_csv('Outex_bio_r_g_b.csv', sep=',', index=False, header=False)
+df_final.to_csv('../datasets/Outex_bio_r_g_b.csv', sep=',', index=False, header=False)
 
 print('It took :', dt.datetime.now() - initial)
