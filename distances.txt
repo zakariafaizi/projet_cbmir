@@ -1,0 +1,29 @@
+
+Pour la distance, utilisez maintenant les distances suivantes:
+- Canberra.
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.canberra.html
+
+ 
+
+- Chebyshev
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.chebyshev.html#scipy.spatial.distance.chebyshev
+
+ 
+
+- Cityblock (Manhattan)
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cityblock.html#scipy.spatial.distance.cityblock
+
+ 
+
+- Mahalanobis
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.mahalanobis.html#scipy.spatial.distance.mahalanobis
+
+ 
+
+- Minkowski
+https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.minkowski.html#scipy.spatial.distance.minkowski
+
+
+
+
+
