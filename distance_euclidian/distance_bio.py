@@ -8,7 +8,7 @@ from typing import List
 from os import listdir
 import datetime as dt
 from math import sqrt
-import matplotlib.pyplot as plt # to show images
+import matplotlib.pyplot as plt # to show query
 
 
 
@@ -48,7 +48,7 @@ for dossier in queryimg_dir:
         # Feature extraction with BiT
         carac_bio = bio(img_gray, dossier,fichier)
         print(carac_bio)
-        # Create list of all the images
+        # Create list of all the query
         ListOfFeatures.append(carac_bio)
 
 
@@ -84,7 +84,7 @@ array = bit.values
 row0 = ListOfFeatures[0]
 
 
-neighbors_count = 30  # how many images to return
+neighbors_count = 30  # how many query to return
 neighbors = get_neighbors(array,pd.to_numeric(row0[1:7]), neighbors_count)
 
 

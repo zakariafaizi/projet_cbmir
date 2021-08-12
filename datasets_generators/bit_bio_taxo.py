@@ -54,7 +54,7 @@ for dossier in outex_dir:
         #print(carac_bit)
         #print(carac_bio)
         #print(carac_taxo)
-        # Create list of all the images
+        # Create list of all the query
         #ListOfFeatures.append(carac_bit)
         #ListOfFeatures.append(carac_bio)
         ListOfFeatures.append(carac_taxo)

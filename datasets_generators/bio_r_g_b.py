@@ -38,7 +38,7 @@ for dossier in outex_dir:
         #img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         carac_bio = bio(img, dossier, fichier)
         print(carac_bio)
-        # Create list of all the images
+        # Create list of all the query
         ListOfFeatures.append(carac_bio)
 
 
