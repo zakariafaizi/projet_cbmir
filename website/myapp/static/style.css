@@ -1,0 +1,82 @@
+.imgs
+{
+    border:solid;
+    border-left : none;
+    border-right : none;
+    border-top : none;
+}
+
+#buttonUpload
+{
+background-color: red;
+}
+
+#form1
+{
+    width: 51%;
+    height:30%;
+    margin-top : 20px;
+    background-color: #bee1e6 ;
+    margin : auto;
+    text-align:center;
+    border-style: inset;
+
+}
+
+.btn-info
+{
+    margin-bottom: 20px;
+}
+
+#teccartlogo
+{
+
+    max-width: 50%;
+    height:40%;
+    margin:auto;
+
+}
+
+#loadingdiv
+{
+      font-family: "Times New Roman", Times, serif;
+      text-align:center;
+      margin-top:10%;
+}
+
+.divlogo
+{
+    margin-top : 10%;
+    text-align:center;
+}
+#id_medical_Img
+{
+   max-width: 70%;
+    height:40%;
+    margin-top : 20px;
+    text-align:center;
+    background-color: #bee1e6 ;
+    color : gray;
+
+}
+
+
+
+
+
+
+.loader {
+
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin:auto;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

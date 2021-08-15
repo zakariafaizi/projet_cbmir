@@ -127,20 +127,19 @@ neighbors = get_neighbors(array,pd.to_numeric(row0[1:7]), neighbors_count)
 fig = plt.figure(figsize=(10,20))
 i = 0
 for neighbor in neighbors:
-    print("Result Image's name : ", neighbor[0], "at folder : ", neighbor[8])
+    print("Result Image's name : ", neighbor[0], "class : ", neighbor[8])
     imgpath = findimage(neighbor[8], neighbor[0])
     img_color = cv2.imread(imgpath, 1)  # 1: Color image. 1 is optional.
     img_color = cv2.cvtColor(img_color, cv2.COLOR_BGR2RGB)
-    ax =fig.add_subplot(neighbors_count, 5,i+1)  # 10 rows and 1 column
+    #ax =fig.add_subplot(neighbors_count, 5,i+1)  # 10 rows and 1 column
     plt.imshow(img_color)
     plt.axis('off')
-    ax.set_title(" class "+ str(neighbor[8]), fontsize=7) # gives title to each image
+    plt.title(str(neighbor[8]), fontsize=30) # gives title to each image
     plt.margins(0, 0)
-    print("i = ",i)
+    plt.savefig(path + 'media/output/'+str(i+1)+'.png', bbox_inches='tight',pad_inches=1)  # to save an image containing all
     i+= 1
 
-
-plt.savefig(path+'media/output/crc_canberra_bio.png', bbox_inches='tight',pad_inches = 1)  #to save an image containing all the outputs
+#plt.savefig(path+'media/output/crc_canberra_bio.png', bbox_inches='tight',pad_inches = 1)  #to save an image containing all the outputs
 #img_color = cv2.imread(images_path+'crc_canberra_bio.png', 1)  # 1: Color image. 1 is optional.
 #cv2.imshow("Outputs",img_color)  #show the outputs
 #cv2.waitKey(0)

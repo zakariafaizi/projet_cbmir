@@ -23,16 +23,8 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload/', views.medical_image_view),
+    path('', views.medical_image_view),
+    path('images/', views.show_images)
 
 ]
 
-#
-#
-# urlpatterns = [
-#     path('image_upload', medical_image_view, name='image_upload'),
-#     path('success', success, name='success'),
-# ]
-#
-# if settings.DEBUG:
-#         urlpatterns += static(settings.MEDIA_URL,
-#                               document_root=settings.MEDIA_ROOT)
